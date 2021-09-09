@@ -9,6 +9,8 @@ def translate(word):
     word = word.lower()
     if word in data:
         return data[word]
+    elif word.title() in data: #if user entered "paris" this will check for "Paris" as well.
+        return data[word.title()]
     elif len(get_close_matches(word,data.keys())) >0:
         confirmation=input(f"Did you mean {get_close_matches(word,data.keys())[0]} instead? Y or N?: ").lower()
         if confirmation=="y":
